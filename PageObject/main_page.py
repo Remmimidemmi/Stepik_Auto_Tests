@@ -1,5 +1,4 @@
 from .base_page import BasePage
-from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from .locators import MainPageLocators
 
