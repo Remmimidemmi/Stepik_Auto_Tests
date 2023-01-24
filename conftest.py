@@ -7,7 +7,6 @@ from selenium import webdriver
 def browser():
     browser = webdriver.Chrome()
     yield browser
-    time.sleep(2)
     browser.quit()
 
 
