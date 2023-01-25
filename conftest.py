@@ -9,9 +9,9 @@ def browser():
     browser.quit()
 
 
-#def pytest_addoption(parser):
-#    parser.addoption('--language', action='store', default='en',
-#                     help="Choose language: 'en', 'fr', 'ru'")
+def pytest_addoption(parser):
+    parser.addoption('--language', action='store', default='en',
+                     help="Choose language: 'en', 'fr', 'ru'")
 
 
 #@pytest.fixture(scope="function")
