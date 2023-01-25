@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+import time
 
 
 class LoginPage(BasePage):
@@ -22,3 +23,14 @@ class LoginPage(BasePage):
         self.is_element_present(*LoginPageLocators.REGISTER_PASSWORD)
         self.is_element_present(*LoginPageLocators.CONFIRM_PASSWORD)
         assert True, "Register field is absent"
+
+    def register_new_user(self):
+        email = str(time.time()) + "@fakemail.org"
+        password = "Askingalexandria2009"
+        self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL).send_keys(email)
+        self.browser.find_element(*LoginPageLocators.REGISTER_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.CONFIRM_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON).click()
+
+
+

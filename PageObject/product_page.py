@@ -1,7 +1,5 @@
-import time
-
 from .base_page import BasePage
-from .locators import ProductPageLocators, BasePageLocators
+from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
@@ -24,10 +22,6 @@ class ProductPage(BasePage):
         text_message_product_name = message_product_name.text
         assert text_message_product_name == text_product_name, "INCORRECT PRODUCT!!!"
         print(f"Correct product '{text_product_name}' add to cart!!!!")
-
-    # def should_not_be_success_message(self):
-    #     assert not self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
-    #         "Success message is presented"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \

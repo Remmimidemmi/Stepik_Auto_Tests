@@ -1,4 +1,3 @@
-import time
 from telnetlib import EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
@@ -59,10 +58,11 @@ class BasePage():
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
-    # def should_be_login_link(self):
-    #     assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
-
     def open_basket(self):
         basket_btn = self.browser.find_element(*BasketPageLocators.BASKET)
         basket_btn.click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
 
