@@ -1,10 +1,11 @@
+import time
 from telnetlib import EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 import math
-from .locators import BasePageLocators
+from .locators import BasePageLocators, BasketPageLocators
 from selenium.webdriver.support.wait import WebDriverWait
 
 
@@ -58,5 +59,10 @@ class BasePage():
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
-    def should_be_login_link(self):
-        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+    # def should_be_login_link(self):
+    #     assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def open_basket(self):
+        basket_btn = self.browser.find_element(*BasketPageLocators.BASKET)
+        basket_btn.click()
+

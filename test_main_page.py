@@ -2,6 +2,9 @@ import pytest
 
 from .PageObject.main_page import MainPage
 from .PageObject.login_page import LoginPage
+from .PageObject.base_page import BasePage
+from .PageObject.basket_page import BasketPage
+
 
 
 @pytest.mark.go_login
@@ -49,3 +52,14 @@ def test_guest_should_be_url(browser):
     page = LoginPage(browser)
     page.open()
     page.should_be_login_url()
+
+@pytest.mark.smoke
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/"
+    browser.get(link)
+    page = BasketPage(browser)
+    page.open()
+    page.open_basket()
+    page.should_not_be_product_present()
+    # page.negative_should_not_be_product_present()
+    page.should_be_message_about_empty_basket()
